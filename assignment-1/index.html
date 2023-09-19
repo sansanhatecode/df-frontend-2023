@@ -1,14 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Bookstore</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
 
-  <body>
-    Hello world
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Bookstore</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/8a3aa853ee.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+    <h1>Bookstore</h1>
+    <div class="user">
+      <span><i class="fa-solid fa-circle-user"></i></span>
+      <p>Sansan</p>
+    </div>
+  </header>
+  <!-- body -->
+  <main>
+    <!-- task bar -->
+    <section class="taskbar">
+      <input type="text" id="seachbar" placeholder="Seach books">
+      <button id="fopenbtn">Add book</button>
+    </section>
+    <!-- table -->
+    <section class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Topic</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <!-- add form -->
+  <div class = "addwrapper hide">
+    <form >
+      <div class="addsection">
+        <h2>Add book</h2>
+        <span id="fclosebtn"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+      <label for="fname">Name</label>
+      <input type="text" id="fname" name="fname" class="form-input">
+      <label for="fauthor">Author</label>
+      <input type="text" id="fauthor" name="fauthor" class="form-input">
+      <label for="ftopic">Topic</label>
+      <select name="ftopic" id="ftopic">
+        <option value="programming">Programming</option>
+        <option value="database">Database</option>
+        <option value="devops">DevOps</option>
+      </select>
+      <input type="submit" value="Create" id="fsubmitbtn">
+    </form>
+  </div>
+  <!-- delete selection -->
+  <div class = "deletewrapper hide">
+    <div class= "delete">
+      <div class="dclose-section">
+        <h2>Delete book</h2>
+        <span id="dclosebtn"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+      <p>Do you want to delete <span id="delete-book"></span></p>
+      <div class="dconfirm-section">
+        <button id="dconfirmbtn">Delete</button>
+        <button id="dcancelbtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
