@@ -17,6 +17,7 @@ const fauthor = document.getElementById('fauthor')
 const ftopic = document.getElementById('ftopic')
 
 fsubmitbtn.addEventListener('click', (e) => {
+    e.preventDefault()
     const bookName = fname.value
     const bookAuthor = fauthor.value
     const bookTopic = ftopic.value
@@ -32,7 +33,7 @@ fsubmitbtn.addEventListener('click', (e) => {
     bookStore.push(newBook)
     setData(bookStore)
     deleteTable()
-    renderTable()
+    renderTable(bookStore)
     toggleForm()
 })
 
@@ -55,7 +56,7 @@ function removeBook(id) {
     books = books.filter(book => book.id !== Number(id));
     setData(books)
     deleteTable()
-    renderTable()
+    renderTable(books)
 }
 
 
@@ -76,7 +77,7 @@ function initial() {
     if (!bookStore) {
         setInitialData()
     }
-    renderTable()
+    renderTable(bookStore)
 }
 
 function setInitialData() {
@@ -115,9 +116,9 @@ function clearStorage() {
     localStorage.clear();
 }
 
-function renderTable() {
+function renderTable(bookStore) {
     const tableBody = document.getElementById('tbody')
-    const bookStore = getData()
+    // const bookStore = getData()
 
     bookStore.forEach(item => {
         const tableRow = document.createElement("tr");
@@ -162,3 +163,15 @@ function deleteTable() {
         arr.forEach((tableRow) => tableBody.removeChild(tableRow))
     }
 }
+
+var searchBar = document.getElementById('searchbar');
+
+searchBar.oninput = (e) => {
+  let searchContent = e.target.value;
+  let books = getData();
+  let newBooks = books.filter(
+    (book) => book.name.toLowerCase().search(searchContent.toLowerCase()) !== -1
+  );
+  deleteTable();
+  renderTable(newBooks);
+};
